@@ -215,7 +215,7 @@ def calculateHandlen(hand):
     """
     # TO DO... <-- Remove this comment when you code this function
     """
-	输入输出举例：
+	输入举例：
 	>>> hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
 	"""
     Handlen = 0
