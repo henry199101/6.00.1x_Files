@@ -180,15 +180,28 @@ def isValidWord(word, hand, wordList):
     Returns True if word is in the wordList and is entirely
     composed of letters in the hand. Otherwise, returns False.
 
-    Does not mutate hand or wordList.
+    Does not mutate(改变) hand or wordList.
    
     word: string
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
     # TO DO ... <-- Remove this comment when you code this function
-
-
+    #word=word.lower()
+    import copy
+    deep_copy_hand=copy.deepcopy(hand)
+    if word in wordList:
+		for letter in word:
+			if letter in deep_copy_hand.keys():
+				deep_copy_hand[letter]-=1
+			else:
+				return False #如果word中出现的字母不在deep_copy_hand.keys()（即hand的键）中，则返回False
+			for dch_letter in deep_copy_hand:
+				if deep_copy_hand[dch_letter]<0: #如果word中，同一个字母出现的次数小于deep_copy_hand中的次数，则返回False
+					return False
+		return True
+    else:
+		return False
 #
 # Problem #4: Playing a hand
 #
