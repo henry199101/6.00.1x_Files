@@ -214,8 +214,14 @@ def calculateHandlen(hand):
     returns: integer
     """
     # TO DO... <-- Remove this comment when you code this function
-
-
+    """
+	ÊäÈëÊä³ö¾ÙÀý£º
+	>>> hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
+	"""
+    Handlen = 0
+    for value in hand.values():
+        Handlen += value
+    return Handlen
 
 def playHand(hand, wordList, n):
     """
