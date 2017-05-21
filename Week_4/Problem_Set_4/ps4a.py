@@ -1,3 +1,5 @@
+# coding:utf-8
+
 # 6.00x Problem Set 4A Template
 #
 # The 6.00 Word Game
@@ -148,14 +150,27 @@ def updateHand(hand, word):
     and returns the new hand, without those letters in it.
 
     Has no side effects: does not modify hand.
-
+	没有副作用，不修改hand
     word: string
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
-
-
+    import copy
+    """
+	输入输出举例：
+	>>> hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
+	hand是一个字典，记录着hand中每个字母出现的次数
+	>>> hand = updateHand(hand, word = 'quail') # You implement this function!你实现的函数!
+	>>> hand
+	{'a':0, 'q':0, 'l':1, 'm':1, 'u':0, 'i':0}
+	"""
+    deep_copy_hand = copy.deepcopy(hand)
+    for letter in word:
+            deep_copy_hand[letter] -= 1
+            """
+            word中出现的字母，每出现1次，则hand字典中对应字母相应减少1次。
+            """
+    return deep_copy_hand
 
 #
 # Problem #3: Test word validity
