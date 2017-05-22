@@ -150,26 +150,26 @@ def updateHand(hand, word):
     and returns the new hand, without those letters in it.
 
     Has no side effects: does not modify hand.
-	√ª”–∏±◊˜”√£¨≤ª–ﬁ∏ƒhand
+    Ê≤°ÊúâÂâØ‰ΩúÁî®Ôºå‰∏ç‰øÆÊîπhand
     word: string
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
     import copy
     """
-	 ‰»Î ‰≥ˆæŸ¿˝£∫
+	ËæìÂÖ•ËæìÂá∫‰∏æ‰æãÔºö
 	>>> hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
-	hand «“ª∏ˆ◊÷µ‰£¨º«¬º◊≈hand÷–√ø∏ˆ◊÷ƒ∏≥ˆœ÷µƒ¥Œ ˝
-	>>> hand = updateHand(hand, word = 'quail') # You implement this function!ƒ„ µœ÷µƒ∫Ø ˝!
+	handÊòØ‰∏Ä‰∏™Â≠óÂÖ∏ÔºåËÆ∞ÂΩïÁùÄhand‰∏≠ÊØè‰∏™Â≠óÊØçÂá∫Áé∞ÁöÑÊ¨°Êï∞
+	>>> hand = updateHand(hand, word = 'quail') # You implement this function!‰Ω†ÂÆûÁé∞ÁöÑÂáΩÊï∞!
 	>>> hand
 	{'a':0, 'q':0, 'l':1, 'm':1, 'u':0, 'i':0}
 	"""
     deep_copy_hand = copy.deepcopy(hand)
     for letter in word:
-            deep_copy_hand[letter] -= 1
-            """
-            word÷–≥ˆœ÷µƒ◊÷ƒ∏£¨√ø≥ˆœ÷1¥Œ£¨‘Úhand◊÷µ‰÷–∂‘”¶◊÷ƒ∏œ‡”¶ºı…Ÿ1¥Œ°£
-            """
+        deep_copy_hand[letter] -= 1
+        """
+        word‰∏≠Âá∫Áé∞ÁöÑÂ≠óÊØçÔºåÊØèÂá∫Áé∞1Ê¨°ÔºåÂàôhandÂ≠óÂÖ∏‰∏≠ÂØπÂ∫îÂ≠óÊØçÁõ∏Â∫îÂáèÂ∞ë1Ê¨°„ÄÇ
+        """
     return deep_copy_hand
 
 #
@@ -180,7 +180,7 @@ def isValidWord(word, hand, wordList):
     Returns True if word is in the wordList and is entirely
     composed of letters in the hand. Otherwise, returns False.
 
-    Does not mutate(∏ƒ±‰) hand or wordList.
+    Does not mutate(ÊîπÂèò) hand or wordList.
    
     word: string
     hand: dictionary (string -> int)
@@ -191,17 +191,17 @@ def isValidWord(word, hand, wordList):
     import copy
     deep_copy_hand=copy.deepcopy(hand)
     if word in wordList:
-		for letter in word:
-			if letter in deep_copy_hand.keys():
-				deep_copy_hand[letter]-=1
-			else:
-				return False #»Áπ˚word÷–≥ˆœ÷µƒ◊÷ƒ∏≤ª‘⁄deep_copy_hand.keys()£®º¥handµƒº¸£©÷–£¨‘Ú∑µªÿFalse
-			for dch_letter in deep_copy_hand:
-				if deep_copy_hand[dch_letter]<0: #»Áπ˚word÷–£¨Õ¨“ª∏ˆ◊÷ƒ∏≥ˆœ÷µƒ¥Œ ˝–°”⁄deep_copy_hand÷–µƒ¥Œ ˝£¨‘Ú∑µªÿFalse
-					return False
-		return True
+        for letter in word:
+            if letter in deep_copy_hand.keys():
+                deep_copy_hand[letter]-=1
+            else:
+                return False #Â¶ÇÊûúword‰∏≠Âá∫Áé∞ÁöÑÂ≠óÊØç‰∏çÂú®deep_copy_hand.keys()ÔºàÂç≥handÁöÑÈîÆÔºâ‰∏≠ÔºåÂàôËøîÂõûFalse
+            for dch_letter in deep_copy_hand:
+                if deep_copy_hand[dch_letter]<0: #Â¶ÇÊûúword‰∏≠ÔºåÂêå‰∏Ä‰∏™Â≠óÊØçÂá∫Áé∞ÁöÑÊ¨°Êï∞Â∞è‰∫édeep_copy_hand‰∏≠ÁöÑÊ¨°Êï∞ÔºåÂàôËøîÂõûFalse
+                    return False
+        return True
     else:
-		return False
+        return False
 #
 # Problem #4: Playing a hand
 #
@@ -215,7 +215,7 @@ def calculateHandlen(hand):
     """
     # TO DO... <-- Remove this comment when you code this function
     """
-	 ‰»ÎæŸ¿˝£∫
+	ËæìÂÖ•‰∏æ‰æãÔºö
 	>>> hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
 	"""
     Handlen = 0
@@ -247,33 +247,39 @@ def playHand(hand, wordList, n):
     """
     # BEGIN PSEUDOCODE <-- Remove this comment when you code this function; do your coding within the pseudocode (leaving those comments in-place!)
     # Keep track of the total score
-    
+    import copy
+    handn = copy.deepcopy(hand)
+    score = 0
     # As long as there are still letters left in the hand:
-    
+    while calculateHandlen(handn) > 0:
         # Display the hand
-        
+        print "Current Hand: ",
+        displayHand(handn)
         # Ask user for input
-        
-        # If the input is a single period:
-        
+        print "Enter word, or a " + "\".\"",
+        word = raw_input("to indicate that you are finished: ")            
+        # If the input is a single period(Âè•Âè∑):
+        if word == ".":                
+            print "Goodbye! Total score: %d points." % score
             # End the game (break out of the loop)
-
-            
+            break
         # Otherwise (the input is not a single period):
-        
+        else:
+            if isValidWord(word, handn, wordList) == False:
             # If the word is not valid:
-            
+                print "Invalid word, please try again.\n"
                 # Reject invalid word (print a message followed by a blank line)
-
             # Otherwise (the word is valid):
-
+            elif isValidWord(word, handn, wordList) == True:
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
-                
+                score += getWordScore(word, n)
+                print "%s earned %d points. Total: %d points.\n" % (word, getWordScore(word, n), score)
                 # Update the hand 
-                
-
+                handn = updateHand(handn, word)
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
-
+    if calculateHandlen(handn) <= 0:
+        print "Run out of letters. Total score: %d points." % score
+    
 
 #
 # Problem #5: Playing a game
