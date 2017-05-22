@@ -114,18 +114,23 @@ def displayHand(hand):
 def dealHand(n):
     """
     Returns a random hand containing n lowercase letters.
+    返回1手随机的牌，包含n个小写字母。
+
     At least n/3 the letters in the hand should be VOWELS.
+    1手牌中最少n/3个字母应该在VOWELS中。
 
-    Hands are represented as dictionaries. The keys are
-    letters and the values are the number of times the
-    particular letter is repeated in that hand.
-
+    Hands are represented as dictionaries.
+    hand是字典。
+    
+    The keys are letters and the values are the number of times the particular letter is repeated in that hand.
+    键是字母，值是hand里字母重复的次数。
+    
     n: int >= 0
     returns: dictionary (string -> int)
     """
     hand={}
     numVowels = n / 3
-    
+    # VOWELS = 'aeiou'
     for i in range(numVowels):
         x = VOWELS[random.randrange(0,len(VOWELS))]
         hand[x] = hand.get(x, 0) + 1
@@ -287,7 +292,7 @@ def playHand(hand, wordList, n):
 
 def playGame(wordList):
     """
-    Allow the user to play an arbitrary number of hands.
+    Allow the user to play an arbitrary(随意的) number of hands.
 
     1) Asks the user to input 'n' or 'r' or 'e'.
       * If the user inputs 'n', let the user play a new (random) hand.
@@ -298,10 +303,26 @@ def playGame(wordList):
     2) When done playing the hand, repeat from step 1    
     """
     # TO DO ... <-- Remove this comment when you code this function
-    print "playGame not yet implemented." # <-- Remove this line when you code the function
-   
-
-
+    #print "playGame not yet implemented." # <-- Remove this line when you code the function
+    hand={} # 对手上的牌hand进行初始化，赋一个初值：空值
+    n=HAND_SIZE
+    while 1:
+        puanduan = raw_input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+        if puanduan == 'e':
+            break # Enter e to end game
+        elif puanduan == 'n':
+            # Enter n to deal a new hand
+            hand = dealHand(n)
+            playHand(hand, wordList, n)
+            print
+        elif puanduan == 'r':
+            if hand == {}: # 如果手上的牌仍然为初值：空值，则说明并未对获取一手牌hand（还没有played a hand）
+                print 'You have not played a hand yet. Please play a new hand first!'
+                print
+            else:
+                playHand(hand, wordList, n)
+        else: # n r e 以外的输入为Invalid command.
+            print 'Invalid command.'
 
 #
 # Build data structures used for entire session and play game
