@@ -18,3 +18,4 @@ def McNuggets_get_abc(n):
     return list_abc
 
 print McNuggets_get_abc(54)
+
